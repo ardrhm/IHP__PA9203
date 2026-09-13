@@ -1,0 +1,145 @@
+************************************************************************
+* Cdl Netlist:
+* 
+* Library Name:  Power_Amplifier
+* Top Cell Name: PA9203
+* View Name:     schematic
+* Netlisted on:  Sep  9 08:45:02 2026
+************************************************************************
+
+
+
+
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    PA_Core_V17
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT PA_Core_V17 RFin RFout VCAS VEE
+*.PININFO RFin:B RFout:B VCAS:B VEE:B
+QQ1 RFout VCAS net1 VEE npn13G2 m=1 le=900.0n we=70.00n Nx=10 Ny=1
+QQ0 net1 RFin VEE VEE npn13G2 m=1 le=900.0n we=70.00n Nx=10 Ny=1
+.ENDS
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    Cap_Array_V6
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT Cap_Array_V6 RFin RFout
+*.PININFO RFin:B RFout:B
+RR1 net3 RFout res_topmetal2 r=1u width=11.8u length=2.0u layer=TopMetal2
+RR0 RFin net3 res_topmetal2 r=1u width=11.8u length=2.0u layer=TopMetal2
+.ENDS
+
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    Cap_100f_F
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT Cap_100f_F RFin RFout
+*.PININFO RFin:B RFout:B
+RR1 net04 RFout res_metal5  r=1u width=11.75u length=1.0u layer=Metal5
+RR0 RFin net2 res_metal5  r=1u width=11.75u length=1.0u layer=Metal5
+.ENDS
+
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    INPUT_Match
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT INPUT_Match RFcoreIN RFin VBias
+*.PININFO RFcoreIN:B RFin:B VBias:B
+RR5 net01 net04 res_topmetal2 r=1u width=23u length=2.0u layer=TopMetal2
+RR4 net01 VBias res_topmetal2 r=1u width=11.8u length=2.0u layer=TopMetal2
+RR3 RFcoreIN net01 res_topmetal2 r=1u width=11.8u length=2.0u layer=TopMetal2
+RR2 net4 RFin res_topmetal2 r=1u width=5u length=2.0u layer=TopMetal2
+RR1 net4 net7 res_topmetal2 r=1u width=23u length=2.0u layer=TopMetal2
+RR0 net06 net4 res_topmetal2 r=1u width=23u length=2.0u layer=TopMetal2
+XC0 net06 net04 / Cap_100f_F
+.ENDS
+
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    Cap_30f_F
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT Cap_30f_F RFin RFout
+*.PININFO RFin:B RFout:B
+RR1 net04 RFout res_metal5 r=1u width=11.75u length=1.0u layer=Metal5
+RR0 RFin net2 res_metal5 r=1u width=11.75u length=1.0u layer=Metal5
+.ENDS
+
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    OUTPUT_Match
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT OUTPUT_Match RFcoreOUT RFout VCC VEE
+*.PININFO RFcoreOUT:B RFout:B VCC:B VEE:B
+RR5 VEE net6 res_topmetal2 r=1u width=23u length=2.0u layer=TopMetal2
+RR4 net6 RFout res_topmetal2 r=1u width=23u length=2.0u layer=TopMetal2
+RR3 net7 net6 res_topmetal2 r=1u width=23u length=2.0u layer=TopMetal2
+RR2 VCC net5 res_topmetal2 r=1u width=11.8u length=2.0u layer=TopMetal2
+RR1 net5 net8 res_topmetal2 r=1u width=5u length=2.0u layer=TopMetal2
+RR0 RFcoreOUT net5 res_topmetal2 r=1u width=11.8u length=2.0u layer=TopMetal2
+XC0 net8 net7 / Cap_30f_F
+.ENDS
+
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    PA_V2_Top
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT PA_V2_Top RFin RFout VBias VCAS VCC VEE
+*.PININFO RFin:B RFout:B VBias:B VCAS:B VCC:B VEE:B
+XI2 net7 net8 net09 VEE / PA_Core_V17
+XI5 net01 VCC / Cap_Array_V6
+XI4 net03 VCAS / Cap_Array_V6
+XI3 net02 net07 / Cap_Array_V6
+XI0 net7 RFin net02 / INPUT_Match
+XI1 net8 RFout net01 VEE / OUTPUT_Match
+RR1 VBias net07 VEE rppd m=1 l=8.8u w=11.8u ps=0 
++ trise=0.0 b=0
+RR0 net09 net03 VEE rppd m=1 l=8.8u w=11.8u ps=0
++ trise=0.0 b=0
+.ENDS
+
+
+
+************************************************************************
+************************************************************************
+* Library Name: Power_Amplifier
+* Cell Name:    PA9203
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT PA9203 RFin RFout VBias VCAS VCC VEE
+*.PININFO RFin:B RFout:B VBias:B VCAS:B VCC:B VEE:B
+XI0 RFin RFout VBias VCAS VCC VEE / PA_V2_Top
+.ENDS
+

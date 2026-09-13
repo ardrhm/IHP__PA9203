@@ -1,0 +1,16 @@
+12-Sep-2026 18:52:00 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+12-Sep-2026 18:52:00 | INFO    | Running SG13G2 LVS checks on design /home/rupok/Downloads/IHP__PA9203/PA9203-main/layout/klayout/PA9203.gds on cell PA9203
+12-Sep-2026 18:52:16 | INFO    | ==============================================================================
+12-Sep-2026 18:52:16 | INFO    | Important Summary
+12-Sep-2026 18:52:16 | INFO    | +------------------+-------------------------------------------------------------------------------------------------+
+12-Sep-2026 18:52:16 | INFO    | | Status           | PASS                                                                                            |
+12-Sep-2026 18:52:16 | INFO    | | Mode             | COMPARE                                                                                         |
+12-Sep-2026 18:52:16 | INFO    | | Outcome          | Comparison mode: PASS (netlists match).                                                         |
+12-Sep-2026 18:52:16 | INFO    | | Layout           | PA9203.gds                                                                                      |
+12-Sep-2026 18:52:16 | INFO    | | Top Cell         | PA9203                                                                                          |
+12-Sep-2026 18:52:16 | INFO    | | Results Dir      | /home/rupok/Downloads/IHP__PA9203/PA9203-main/layout/klayout/lvs_run_PA9203_2026_09_12_18_51_59 |
+12-Sep-2026 18:52:16 | INFO    | | Warnings         | 0                                                                                               |
+12-Sep-2026 18:52:16 | INFO    | | Errors           | 0                                                                                               |
+12-Sep-2026 18:52:16 | INFO    | | Run Time (s)     | 16.393                                                                                          |
+12-Sep-2026 18:52:16 | INFO    | +------------------+-------------------------------------------------------------------------------------------------+
+12-Sep-2026 18:52:16 | INFO    | ==============================================================================

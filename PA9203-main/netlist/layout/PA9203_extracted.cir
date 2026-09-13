@@ -1,0 +1,55 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 12/09/2026 18:52
+
+.SUBCKT PA9203 RFin RFout VBias VCAS VCC VEE
+X$39749 VCC VBias VCAS VEE RFin RFout PA_V2_Top
+.ENDS PA9203
+
+.SUBCKT PA_V2_Top VCC VBias VCAS VEE RFin RFout
+X$1 VCC \$I4 Cap_Array_V6
+X$9 VCAS \$9 Cap_Array_V6
+X$10 VEE \$I4 RFout \$I15 OUTPUT_Match
+X$24 \$I5 \$I1 RFin INPUT_Match
+X$25 VEE \$I1 \$10 \$I15 PA_Core_V17
+X$26 \$12 \$I5 Cap_Array_V6
+R$1 VBias \$12 VEE rppd w=11.8u l=8.8u ps=0u b=0 m=1
+R$2 \$9 \$10 VEE rppd w=11.8u l=8.8u ps=0u b=0 m=1
+.ENDS PA_V2_Top
+
+.SUBCKT Cap_Array_V6 RFout RFin
+R$1 RFout RFin res_topmetal2 R=0.00372881355932 L=4u W=11.8u A=47.2p P=55.2u
+.ENDS Cap_Array_V6
+
+.SUBCKT OUTPUT_Match VEE VCC RFout RFcoreOUT
+X$9 \$10 \$6 Cap_30f_F
+R$1 VCC \$7 res_topmetal2 R=0.00186440677966 L=2u W=11.8u A=23.6p P=27.6u
+R$2 \$7 \$10 res_topmetal2 R=0.0044 L=2u W=5u A=10p P=14u
+R$3 RFcoreOUT \$7 res_topmetal2 R=0.00186440677966 L=2u W=11.8u A=23.6p P=27.6u
+R$4 VEE \$8 res_topmetal2 R=0.00095652173913 L=2u W=23u A=46p P=50u
+R$5 \$8 \$6 res_topmetal2 R=0.00095652173913 L=2u W=23u A=46p P=50u
+R$6 \$8 RFout res_topmetal2 R=0.00095652173913 L=2u W=23u A=46p P=50u
+.ENDS OUTPUT_Match
+
+.SUBCKT PA_Core_V17 VEE RFin VCAS RFout
+Q$1 \$16 RFin VEE VEE npn13G2 we=70n le=900n Nx=10 m=1
+Q$2 RFout VCAS \$16 VEE npn13G2 we=70n le=900n Nx=10 m=1
+.ENDS PA_Core_V17
+
+.SUBCKT INPUT_Match VBias RFcoreIN RFin
+X$4 \$7 \$6 Cap_100f_F
+R$1 \$5 \$7 res_topmetal2 R=0.00095652173913 L=2u W=23u A=46p P=50u
+R$2 \$5 \$9 res_topmetal2 R=0.00095652173913 L=2u W=23u A=46p P=50u
+R$3 RFin \$5 res_topmetal2 R=0.0044 L=2u W=5u A=10p P=14u
+R$4 \$8 RFcoreIN res_topmetal2 R=0.00186440677966 L=2u W=11.8u A=23.6p P=27.6u
+R$5 \$6 \$8 res_topmetal2 R=0.00095652173913 L=2u W=23u A=46p P=50u
+R$6 \$8 VBias res_topmetal2 R=0.00186440677966 L=2u W=11.8u A=23.6p P=27.6u
+.ENDS INPUT_Match
+
+.SUBCKT Cap_30f_F RFin RFout
+R$1 \$4 RFout res_metal5 R=0.00748936170213 L=1u W=11.75u A=11.75p P=25.5u
+R$2 RFin \$5 res_metal5 R=0.00748936170213 L=1u W=11.75u A=11.75p P=25.5u
+.ENDS Cap_30f_F
+
+.SUBCKT Cap_100f_F RFin RFout
+R$1 \$5 RFout res_metal5 R=0.00748936170213 L=1u W=11.75u A=11.75p P=25.5u
+R$2 RFin \$2 res_metal5 R=0.00748936170213 L=1u W=11.75u A=11.75p P=25.5u
+.ENDS Cap_100f_F
