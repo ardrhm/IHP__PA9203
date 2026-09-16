@@ -16,7 +16,7 @@
 
 ## Circuit
 
-![93 GHz PA circuit diagram](figures/circuit_diagram.png)
+![93 GHz PA circuit diagram](figures/Circuit_Diagram.png)
 
 ## Power Gain
 
