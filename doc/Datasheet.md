@@ -1,4 +1,4 @@
-# 93 GHz Power Amplifier
+# W-Band Power Amplifier (PA-IC)
 
 ## Specifications
 
